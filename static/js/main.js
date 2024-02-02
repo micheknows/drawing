@@ -65,9 +65,24 @@ penBtn.onclick = () =>  {
 // Eraser button element 
 const eraserBtn = document.querySelector('.eraser-icon');
 
-// Toggle eraser mode   
 eraserBtn.onclick = () => {
+
   brush.eraser = !brush.eraser;
+
+  if (brush.eraser) {
+
+    canvas.isDrawingMode = false;
+    canvas.discardActiveObject();
+    canvas.freeDrawingBrush.color = 'white';
+    canvas.freeDrawingBrush.width = 20;
+
+  } else {
+
+    canvas.freeDrawingBrush.color = curColor;
+    canvas.freeDrawingBrush.width = brush.width;
+
+  }
+
 };
 
 
@@ -88,7 +103,11 @@ function syncBrushColor() {
 function handleBrush(e) {
   
   if (brush.eraser) { 
-   // Erase path logic
+
+    e.path.stroke = 'white'; // Erase white
+
+    canvas.remove(e.target); // Clear path
+
 
   } else {
 
