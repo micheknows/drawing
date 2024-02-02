@@ -46,6 +46,7 @@ const sizeSlider = document.querySelector('input[type="range"]');
 // On size change, update brush width
 sizeSlider.oninput = e => {
   brush.width = parseInt(e.target.value) * 2;
+  canvas.freeDrawingBrush.width = brush.width * 2;
 };
 
 
