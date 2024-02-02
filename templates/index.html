@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Graphics App</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+  <title>Graphics Editor</title>
+
 </head>
 
 <body>
 
-  <!-- Top navbar -->
   <nav class="navbar navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="#">My Graphics App</a>
-
+      <a class="navbar-brand" href="#">Graphics Maker</a>
       <button class="btn btn-success btn-lg">Save</button>
-
     </div>
   </nav>
 
-  <div class="container my-5">
-    <!-- Workspace toolbar -->
-    <div class="toolbar mb-3">
-      <button class="btn btn-primary mr-2">Shapes</button>
-      <button class="btn btn-secondary mr-2">Images</button>
-      <button class="btn btn-success mr-2">Text</button>
+  <div class="container mt-5">
+
+    <div id="toolbar" class="bg-light p-3">
+          <div class="btn-group">
+            <button class="btn btn-primary" id="penBtn">Pen</button>
+
+            <input type="color" value="#000000">
+
+            <input type="range" min="1" max="10" value="2">
+
+            <button class="btn btn-toggle">
+              <div class="eraser-icon">✏️</div>
+            </button>
+
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-secondary" id="shapeBtn">Shapes</button>
+
+            <input type="color" value="#000000">
+
+            <input type="range" min="1" max="10" value="2">
+
+          </div>
     </div>
 
-    <!-- Canvas -->
-    <div style="background: #ddd; width:800px; height: 600px;">
-      <!-- Fabric canvas renders here -->
-    </div>
+    <canvas id="canvas" width="550" height="712"></canvas>
 
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.3.1/fabric.min.js"></script>
+
+  <script src="static/js/main.js"></script>
 
 </body>
 </html>
