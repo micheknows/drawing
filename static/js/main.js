@@ -45,7 +45,7 @@ const sizeSlider = document.querySelector('input[type="range"]');
  
 // On size change, update brush width
 sizeSlider.oninput = e => {
-  brush.width = parseInt(e.target.value);
+  brush.width = parseInt(e.target.value) * 2;
 };
 
 
@@ -56,7 +56,9 @@ const penBtn = document.getElementById('penBtn');
 
 // Toggle free draw mode
 penBtn.onclick = () =>  {
-  canvas.isDrawingMode = !canvas.isDrawingMode;
+  canvas.isDrawingMode = true;
+
+  brush.eraser = false;
 };
 
 // ERASER  
@@ -67,14 +69,14 @@ const eraserBtn = document.querySelector('.eraser-icon');
 
 eraserBtn.onclick = () => {
 
-  brush.eraser = !brush.eraser;
+  brush.eraser = true;
 
   if (brush.eraser) {
 
-    canvas.isDrawingMode = false;
+    //canvas.isDrawingMode = false;
     canvas.discardActiveObject();
     canvas.freeDrawingBrush.color = 'white';
-    canvas.freeDrawingBrush.width = 20;
+    canvas.freeDrawingBrush.width = brush.width * 2;
 
   } else {
 
